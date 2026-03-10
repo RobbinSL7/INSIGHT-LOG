@@ -22,19 +22,19 @@ def main():
         if "ERROR" in clean:
             ERROR_Count += 1
 
-        if ERROR_Count > 5:
+    if ERROR_Count > 5:
          print("WARNING: Too many errors in the log")
         
         
-         file.close()    
+    file.close()    
 
 
-        print("Log Summary:")
-        print("--------------")
-        print("Total Lines: " ,LINE_Count)
-        print("INFO: " ,INFO_Count)
-        print("WARN: " ,WARN_Count)
-        print("ERROR: " ,ERROR_Count)
+    print("Log Summary:")
+    print("--------------")
+    print("Total Lines: " ,LINE_Count)
+    print("INFO: " ,INFO_Count)
+    print("WARN: " ,WARN_Count)
+    print("ERROR: " ,ERROR_Count)
 
     
 
