@@ -1,43 +1,50 @@
-def main():
-    print("Hello, World!!!!")
+class LogAnalyzer:
 
-    LINE_Count = 0
-    INFO_Count = 0
-    WARN_Count = 0
-    ERROR_Count = 0
+    def __init__(self):
+       self.LINE_Count = 0
+       self.INFO_Count = 0
+       self.WARN_Count = 0
+       self.ERROR_Count = 0
+       self.reviewLines = []
 
-
-    file = open("starter.log", "r")
-    reviewLines = file.readlines()
+    def analyze_logs(self):
+        print("Hello, World!!!!")
+        file = open("starter.log", "r")
+        reviewLines = file.readlines()
     
 
-    for line in reviewLines:
-        clean = line.strip()
+        for line in reviewLines:
+            clean = line.strip()
+            self.LINE_Count += 1
+            if "INFO" in clean:
+                self.INFO_Count += 1
+            if "WARN" in clean:
+                self.WARN_Count += 1
+            if "ERROR" in clean:
+                self.ERROR_Count += 1
 
-        LINE_Count += 1
-        if "INFO" in clean:
-            INFO_Count += 1
-        if "WARN" in clean:
-            WARN_Count += 1
-        if "ERROR" in clean:
-            ERROR_Count += 1
-
-    if ERROR_Count > 5:
+        if self.ERROR_Count > 5:
          print("WARNING: Too many errors in the log")
         
         
-    file.close()    
+        file.close()    
 
+    def print_summary(self):
+      print("Log Summary:")
+      print("--------------")
+      print("Total Lines: " ,self.LINE_Count)
+      print("INFO: " ,self.INFO_Count)
+      print("WARN: " ,self.WARN_Count)
+      print("ERROR: " ,self.ERROR_Count)
 
-    print("Log Summary:")
-    print("--------------")
-    print("Total Lines: " ,LINE_Count)
-    print("INFO: " ,INFO_Count)
-    print("WARN: " ,WARN_Count)
-    print("ERROR: " ,ERROR_Count)
-
+def main():
+     analyzer = LogAnalyzer()
+     analyzer.analyze_logs()
+     analyzer.print_summary()
     
 
 
 if __name__ == "__main__":
-    main()
+   main()
+
+
