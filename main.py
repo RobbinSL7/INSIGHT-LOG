@@ -6,10 +6,11 @@ class LogAnalyzer:
        self.WARN_Count = 0
        self.ERROR_Count = 0
        self.reviewLines = []
+       self.targetFile = []
 
     def analyze_logs(self):
         print("Hello, World!!!!")
-        file = open("starter.log", "r")
+        file = open(self.targetFile, "r")
         reviewLines = file.readlines()
     
 
@@ -38,7 +39,7 @@ class LogAnalyzer:
       print("ERROR: " ,self.ERROR_Count)
 
 def main():
-     analyzer = LogAnalyzer()
+     analyzer = LogAnalyzer(targetFile)
      analyzer.analyze_logs()
      analyzer.print_summary()
     
