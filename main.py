@@ -1,16 +1,16 @@
 class LogAnalyzer:
 
-    def __init__(self):
+    def __init__(self, fileName):
        self.LINE_Count = 0
        self.INFO_Count = 0
        self.WARN_Count = 0
        self.ERROR_Count = 0
        self.reviewLines = []
-       self.targetFile = []
+       self.fileName = fileName
 
     def analyze_logs(self):
         print("Hello, World!!!!")
-        file = open(self.targetFile, "r")
+        file = open(self.fileName, "r")
         reviewLines = file.readlines()
     
 
@@ -39,7 +39,8 @@ class LogAnalyzer:
       print("ERROR: " ,self.ERROR_Count)
 
 def main():
-     analyzer = LogAnalyzer(targetFile)
+     fileName = input("Enter the log file name: ")
+     analyzer = LogAnalyzer(fileName)
      analyzer.analyze_logs()
      analyzer.print_summary()
     
