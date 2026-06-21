@@ -42,25 +42,22 @@ class LogAnalyzer:
 
 def main():
 
-    while not fileCheck.is_file():
+    while True:
+          fileName = input("Enter the log file name: ")
+          fileCheck = Path(fileName)
 
-        fileName = input("Enter the log file name: ")
-        fileCheck = Path(fileName)
-
-        if fileCheck.is_file():
+          if fileCheck.is_file():
             print("Successfully opened file:")
 
             analyzer = LogAnalyzer(fileName)
             analyzer.analyze_logs()
             analyzer.print_summary()
-        else: 
+            break
+          
+          else: 
             print("Error: File does not exist, please try again.")
              
-    analyzer = LogAnalyzer(fileName)
-    analyzer.analyze_logs()
-    analyzer.print_summary()           
-    
-
+           
 
 if __name__ == "__main__":
    main()
