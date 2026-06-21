@@ -1,3 +1,5 @@
+from pathlib import Path
+
 class LogAnalyzer:
 
     def __init__(self, fileName):
@@ -39,10 +41,24 @@ class LogAnalyzer:
       print("ERROR: " ,self.ERROR_Count)
 
 def main():
-     fileName = input("Enter the log file name: ")
-     analyzer = LogAnalyzer(fileName)
-     analyzer.analyze_logs()
-     analyzer.print_summary()
+
+    while not fileCheck.is_file():
+
+        fileName = input("Enter the log file name: ")
+        fileCheck = Path(fileName)
+
+        if fileCheck.is_file():
+            print("Successfully opened file:")
+
+            analyzer = LogAnalyzer(fileName)
+            analyzer.analyze_logs()
+            analyzer.print_summary()
+        else: 
+            print("Error: File does not exist, please try again.")
+             
+    analyzer = LogAnalyzer(fileName)
+    analyzer.analyze_logs()
+    analyzer.print_summary()           
     
 
 
