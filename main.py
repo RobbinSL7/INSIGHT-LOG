@@ -12,25 +12,22 @@ class LogAnalyzer:
 
     def analyze_logs(self):
         print("Hello, World!!!!")
-        file = open(self.fileName, "r")
-        reviewLines = file.readlines()
-    
 
-        for line in reviewLines:
-            clean = line.strip()
-            self.LINE_Count += 1
-            if "INFO" in clean:
+        with open(self.fileName, "r") as file:
+
+         for line in file:
+             clean = line.strip()
+             self.LINE_Count += 1
+             if "INFO" in clean:
                 self.INFO_Count += 1
-            if "WARN" in clean:
+             if "WARN" in clean:
                 self.WARN_Count += 1
-            if "ERROR" in clean:
+             if "ERROR" in clean:
                 self.ERROR_Count += 1
+                if self.ERROR_Count > 5:
+                  print("WARNING: Too many errors in the log")
+                  break
 
-        if self.ERROR_Count > 5:
-         print("WARNING: Too many errors in the log")
-        
-        
-        file.close()    
 
     def print_summary(self):
       print("Log Summary:")
