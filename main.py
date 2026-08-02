@@ -1,6 +1,6 @@
 from pathlib import Path
 
-class LogAnalyzer:
+class SCAnalyzer:
 
     def __init__(self, fileName):
        self.LINE_Count = 0
@@ -30,7 +30,7 @@ class LogAnalyzer:
 
 
     def print_summary(self):
-      print("Log Summary:")
+      print("Scan Summary:")
       print("--------------")
       print("Total Lines: " ,self.LINE_Count)
       print("INFO: " ,self.INFO_Count)
@@ -40,13 +40,13 @@ class LogAnalyzer:
 def main():
 
     while True:
-          fileName = input("Enter the log file name: ")
+          fileName = input("Enter the file name: ")
           fileCheck = Path(fileName)
 
           if fileCheck.is_file():
             print("Successfully opened file:")
 
-            analyzer = LogAnalyzer(fileName)
+            analyzer = SCAnalyzer(fileName)
             analyzer.analyze_logs()
             analyzer.print_summary()
             break

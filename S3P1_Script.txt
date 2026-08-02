@@ -1,0 +1,21 @@
+
+self.DEF_Count = 0
+self.CLASS_Count = 0
+self.IMPORT_Count = 0
+self.EXCEPT_Count = 0
+self.COMMENT_Count = 0
+self.F_LOOP_Count = 0
+self.W_LOOP_Count = 0
+self.INFO_Count = 0
+self.PRINT_Count = 0
+self.IF_Count = 0
+self.ELSE_Count = 0
+self.ELIF_Count = 0
+self.RETURN_Count = 0
+self.BREAK_Count = 0
+
+
+
+
+if "def" in clean
+   self
