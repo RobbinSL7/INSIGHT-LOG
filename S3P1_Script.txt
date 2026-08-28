@@ -1,3 +1,4 @@
+def __init__(COUNT_VARIABLES):
 
 # Baseline
 self.LINE_Count = 0
@@ -14,6 +15,7 @@ self.CLASS_Count = 0
 # Imports & Control Flow
 self.IMPORT_Count = 0
 self.EXCEPT_Count = 0
+self.TRY_Count = 0
 self.COMMENT_Count = 0
 self.F_LOOP_Count = 0
 self.W_LOOP_Count = 0
@@ -29,11 +31,76 @@ self.INCREM_Count = 0
 self.RAISE_Count = 0
 self.GLOBAL_Count = 0
 self.PASS_Count = 0
-self.ASSERT
+self.ASSERT_Count = 0
+
+
+
+def analyze_logs(CHECK_STATEMENTS):
+
+for line in file:
+    clean = line.strip()
+    self.LINE_Count += 1
+     if "INFO" in clean:
+         self.INFO_Count += 1
+     if "WARN" in clean:
+         self.WARN_Count += 1
+     if "ERROR" in clean:
+         self.ERROR_Count += 1
+     if clean.startswith("def ") and clean.endswith(":"):
+         self.DEF_Count += 1
+     if clean.startswith("class ") and clean.endswith(":"):
+         self.CLASS_Count += 1
+     if "import" in clean:
+         self.IMPORT_Count += 1
+     if clean.startswith("except: ") and clean.endswith(":"):
+         self.EXCEPT_Count += 1
+     if "try:" in clean:
+         self.TRY_Count += 1
+     if clean.startswith("#") and clean.endswith("#"):
+         self.COMMENT_Count += 1
+     if clean.startswith("for ") and clean.endswith(":"):
+         self.F_LOOP_Count += 1
+     if clean.startswith("while: ") and clean.endswith(":"):
+         self.W_LOOP_Count += 1
+     if clean.startswith("print(") or clean.startswith("print ("):
+         self.PRINT_Count += 1 
+     if "IF in clean:
+         self.IF_Count += 1
+     if "ELSE" in clean:
+         self.ELSE_Count += 1
+     if "ELIF" in clean:
+         self.ELIF_Count += 1
+     if "RETURN" in clean:
+         self.RETURN_Count += 1
+     if "BREAK" in clean:
+         self.BREAK_Count += 1
+     if "CONTINUE" in clean:
+         self.CONTINUE_Count += 1
+     if "+=" in clean:
+         self.INCREM_Count += 1
+     if "raise" in clean:
+         self.RAISE_Count += 1
+     if "global" in clean:
+         self.GLOBAL_Count += 1
+     if "pass" in clean:
+         self.PASS_Count += 1
+     if "assert" in clean:
+         self.ASSERT_Count += 1
+     
+     
+
+
+     
+
+         
 
 
 
 
 
-if "def" in clean
-   self
+
+
+
+         if self.ERROR_Count > 5:
+           print("WARNING: Too many errors in the log")
+           break
