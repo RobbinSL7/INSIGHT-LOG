@@ -64,27 +64,27 @@ for line in file:
          self.W_LOOP_Count += 1
      if clean.startswith("print(") or clean.startswith("print ("):
          self.PRINT_Count += 1 
-     if "IF in clean:
+     if clean.startswith("if ") or clean.endswith(":"):
          self.IF_Count += 1
-     if "ELSE" in clean:
+     if clean.startswith("else ") or clean.endswith(":"):
          self.ELSE_Count += 1
-     if "ELIF" in clean:
+     if clean.startswith("elif ") or clean.endswith(":"):
          self.ELIF_Count += 1
      if "RETURN" in clean:
          self.RETURN_Count += 1
-     if "BREAK" in clean:
+     if clean.startswith("break ") or clean.endswith(" "):
          self.BREAK_Count += 1
-     if "CONTINUE" in clean:
+     if clean.startswith("continue ") and clean.endswith(" "):
          self.CONTINUE_Count += 1
      if "+=" in clean:
          self.INCREM_Count += 1
-     if "raise" in clean:
+     if clean.startswith("raise ") and clean.endswith(" "):
          self.RAISE_Count += 1
-     if "global" in clean:
+     if clean.startswith("global") and clean.endswith(" "):
          self.GLOBAL_Count += 1
-     if "pass" in clean:
+     if clean.startswith("pass ") and clean.endswith(" "):
          self.PASS_Count += 1
-     if "assert" in clean:
+     if clean.startswith("assert") and clean.endswith(" ") or clean.endswith('"'):
          self.ASSERT_Count += 1
      
      
@@ -104,3 +104,50 @@ for line in file:
          if self.ERROR_Count > 5:
            print("WARNING: Too many errors in the log")
            break
+
+
+ def print_summary(PRINT_STATEMENTS):
+
+      print("Scan Summary:")
+      print("--------------\n")
+      
+      # Baseline
+      print("Total Lines: " ,self.LINE_Count)
+      print("INFO: " ,self.INFO_Count)
+      print("WARN: " ,self.WARN_Count)
+      print("ERROR: " ,self.ERROR_Count)
+
+      # Function, Classes & Scope
+      print("DEF_Count: " ,self.DEF_Count)
+      print("CLASS_Count: " ,self.CLASS_Count)
+
+      # Imports & Control Flow
+      print("IMPORT: " ,self.IMPORT_Count)
+      print("EXCEPT: " ,self.EXCEPT_Count)
+      print("TRY: " ,self.TRY_Count)
+      print("COMMENT: " ,self.INFO_Count)
+      print("FOR LOOP: " ,self.F_LOOP_Count)
+      print("WHILE LOOP: " ,self.W_LOOP_Count)
+
+      # Branching & Decision Logic
+      print("IF: " ,self.IF_Count)
+      print("ELSE: " ,self.ELSE_Count)
+      print("ELIF: " ,self.ELIF_Count)
+
+      # Execution Jumps & Loop Control
+      print("RETURN: " ,self.RETURN_Count)
+      print("BREAK: " ,self.BREAK_Count)
+      print("CONTINUE: " ,self.CONTINUE_Count)
+      print("PASS: " ,self.PASS_Count)
+
+      # Operations & Expressions
+      print("PRINT: " ,self.PRINT_Count)
+      print("INCREMENT: " ,self.INCREM_Count)
+      print("GLOBAL: " ,self.GLOBAL_Count)
+
+      # Error Handling, Signals & Assertions
+      print("RAISE: " ,self.RAISE_Count)
+      print("ASSERT: " ,self.ASSERT_Count)
+
+
+
